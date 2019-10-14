@@ -1,2 +1,2 @@
-# mipt_stats_lectures
+# Статистика, прикладной поток
 Lectrues in Applied Statictics
