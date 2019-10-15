@@ -124,7 +124,7 @@ __Замечание:__ Условие непрерывности на $\Theta$ 
 > $$\dfrac{h(a + \xi_n b_n) - h(a)}{b_n} \xrightarrow{d} \dfrac{\partial h}{\partial x}\Bigr\rvert_a \cdot \xi, $$  
 > где $\dfrac{\partial h}{\partial x}\Bigr\rvert_a$ — матрица Якоби функции $h$ в точке $a$.
 
-__Док-во $(d = 1)$ :__ 
+__Доказательство $(d = 1)$ :__ 
 
 Определим функцию $\quad H(x) = \begin{cases}
 \dfrac{h(x+a) - h(a)}{x},\quad если\ x \neq 0 \\
