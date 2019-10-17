@@ -84,7 +84,7 @@ __Примеры:__
 
 >__Теорема__ _(б/д)_: Пусть $X = (X_1, \dots, X_n)$ — выборка из  распределения $P \in \mathcal{P}$. Тогда
 >$$ \sqrt{n}(\overline{X}_\alpha - \theta) \xrightarrow{d_\theta} \mathcal{N}(0, \sigma^2_\alpha), \text{ где}$$
->$$ \sigma^2_\alpha = \dfrac{2}{(1-2\alpha)^2}\left(\int\limits_0^{\theta} x^2p_0(x)dx + \alpha u^2_{1-\alpha} \right), $$
+>$$ \sigma^2_\alpha = \dfrac{2}{(1-2\alpha)^2}\left(\int\limits_0^{u_{1-\alpha}} x^2p_0(x)dx + \alpha u^2_{1-\alpha} \right), $$
 > $u_{1-\alpha}$ — $(1 - \alpha)$-квантиль распределения $P_0$.
 
 __Пример:__ для $\mathcal{N}(0, 1)$

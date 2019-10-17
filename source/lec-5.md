@@ -43,8 +43,8 @@ __Следствия:__
 3. Можно менять местами $\frac{\partial}{\partial \theta}$ и $\int$
 
 >__Утверждение 1:__
->1. $$E_\theta u(X) = \nabla \ln h(\theta) = \left(\frac{\partial}{\partial \theta} \ln h(\theta)\right)_j$$
->2. $$D_\theta u(X) = \nabla^2 \ln h(\theta) = \left(\frac{\partial^2}{\partial \theta^2} \ln h(\theta)\right)_{jk}$$
+>1. $$E_\theta u(X_1) = \nabla \ln h(\theta) = \left(\frac{\partial}{\partial \theta} \ln h(\theta)\right)_j$$
+>2. $$D_\theta u(X_1) = \nabla^2 \ln h(\theta) = \left(\frac{\partial^2}{\partial \theta^2} \ln h(\theta)\right)_{jk}$$
 
 $\triangle$ (1): 
 $$\frac{\partial h(\theta)}{\partial \theta_j} = \frac{\partial}{\partial \theta}\int\limits_\mathscr{X} g(x)e^{\theta^Tu(x)}dx = \{\text{следствие 3}\} = \int\limits_\mathscr{X} u_j(x)g(x)e^{\theta^Tu(x)}dx = h(\theta)\int\limits_\mathscr{X}\dfrac{u_j(x)}{h(\theta)})g(x)e^{\theta^Tu(x)}dx = h(\theta)E_\theta u_j(X_1).$$

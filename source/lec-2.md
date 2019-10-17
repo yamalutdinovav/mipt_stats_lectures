@@ -55,7 +55,7 @@ __Примеры:__
 
 #### Асимптотические свойства
 
-Пусть $X = (X_1, \dots)$ — выборка неограниченного размера из $\\P \in \{P_\theta \ \vert \theta \in \Theta \}, \Theta \in \mathbb{R}^d$.
+Пусть $X = (X_1, \dots)$ — выборка неограниченного размера из $P \in \{P_\theta \ \vert \theta \in \Theta \}, \Theta \in \mathbb{R}^d$.
 
 >__Определение:__
 > 1. Оценка $\hat{\theta_n}(X_1, \dots, X_n)$ называется _состоятельной оценкой_ $\theta$, если $\hat{\theta_n}(X_1, \dots, X_n) \xrightarrow{P_\theta} \theta \quad \forall \theta \in \Theta.$
@@ -126,10 +126,11 @@ __Замечание:__ Условие непрерывности на $\Theta$ 
 
 __Доказательство $(d = 1)$ :__ 
 
-Определим функцию $\quad H(x) = \begin{cases}
+Определим функцию 
+$$\quad H(x) = \begin{cases}
 \dfrac{h(x+a) - h(a)}{x},\quad если\ x \neq 0 \\
-h'(a), \quad если \ x = 0
-\end{cases}$.  
+h'(a), \quad если \ x = 0.
+\end{cases} $$  
 Функция $H$ непрерывна в нуле. Тогда по лемме Слуцкого $\ \xi_n b_n \xrightarrow{d} \xi \cdot 0 = 0 \implies \\ \implies \xi_n b_n \xrightarrow{p} 0.$ Применим теорему о наследовании сходимостей:
 $$ H(\xi_n b_n) = \dfrac{h(\xi_n b_n+a) - h(a)}{\xi_n b_n} \xrightarrow{p} H(0) = h'(a) \implies \\ \implies  \dfrac{h(\xi_n b_n+a) - h(a)}{\xi_n b_n} \xrightarrow{d} h'(a). $$
 Применим еще раз лемму Слуцкого:
