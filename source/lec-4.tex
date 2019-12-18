@@ -1,0 +1,128 @@
+\documentclass[12pt]{report}
+\usepackage[a4paper]{geometry}
+                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}
+\usepackage{listings}
+\usepackage[cm]{fullpage}
+\usepackage{layout}
+\usepackage{amsthm}
+\usepackage{amssymb,amsmath,amsfonts,latexsym,dsfont}
+
+\usepackage{ upgreek }
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage[warn]{mathtext}
+\usepackage[T1,T2A]{fontenc}
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[english,bulgarian,ukrainian,russian]{babel}
+\titleformat{\section}[block]{\color{black}\Large\bfseries\filcenter}{}{1em}{}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+\setcounter{secnumdepth}{0}
+\renewcommand{\le}{\leqslant} 
+\renewcommand{\ge}{\geqslant }
+\DeclareMathOperator{\sign}{sign}
+
+           		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\ifx\pdfoutput\undefined
+\usepackage{graphicx}
+\else
+\usepackage[pdftex]{graphicx}
+\lstset{language=C++}    
+
+\title{Основы программирования}
+\author{Никита Павличенко}
+%\date{October 2017}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\renewenvironment{proof}{{\bfseries Доказательство:}}{$\square$\\\\}
+\newenvironment{solution}{{\bfseries Решение:}}{$\square$\\\\}
+\newtheorem{theorem}{Теорема}
+\newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
+\newtheorem{corollary}{Следствие}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{notation}{Обозначение}
+\newtheorem{example}{Пример}
+\newtheorem{problem}{Задача}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+
+\begin{document}
+\section{Лекция 4}
+\begin{example}
+	$X_1, \ldots, X_n \sim Bern(\theta)$. Найти ОМП для $\theta$ и $\ln \dfrac{\theta}{1-\theta}$.
+\end{example}
+
+\begin{proof}
+	$p_\theta(x) = P_\theta(X_1 = x) =  \begin{cases}
+		\theta, & x = 1 \\
+		1 - \theta, & x = 0
+	  \end{cases} = \theta^x(1-\theta)^{1-x}.$\\
+	\begin{equation*}
+		L_X(\theta) = \prod_{i=1}^n p_\theta (X_i) = \prod_{i=1}^n \theta^{X_i} (1 - \theta)^{1-X_i} = \theta^{\sum X_i}(1-\theta)^{n-\sum X_i}
+	\end{equation*}
+	\begin{equation*}
+		l_X(\theta) = \ln L_X(\theta) = \sum X_i \ln \theta + (n - \sum X_i)\ln(1-\theta)
+	\end{equation*}
+	\begin{equation*}
+		\dfrac{\partial l_X(\theta)}{\partial \theta} = \dfrac{\sum X_i}{\theta} - \dfrac{n - \sum X_i}{1-\theta} = 0
+	\end{equation*}
+	\begin{equation*}
+		(1-\theta)\sum X_i = \theta(n - \sum X_i)
+	\end{equation*}
+	\begin{equation*}
+		\sum X_i = n\theta \Rightarrow \theta = \overline{X}.
+	\end{equation*}
+	По свойству независимости от способа параметризации ОМП для $\ln \dfrac{\theta}{1-\theta}$ это $\ln \dfrac{\overline{X}}{1-\overline{X}}$.
+	Посчитаем асимптотическую для $\hat{\theta} = \overline{X}$. $i(\theta) = E_\theta \left(\dfrac{\partial l_{X_1}(\theta)}{\partial\theta}\right)^2 = E_\theta\left(\dfrac{X_1}{\theta}-\dfrac{1-X_1}{1-\theta}\right)^2 = \dfrac{1}{\theta^2 (1-\theta)^2}E_\theta((1-\theta)X_1 - \theta(1-X_1))^2 = \dfrac{1}{\theta^2(1-\theta)^2}E_\theta (X_1 - \theta)^2 = \dfrac{1}{\theta^2 (1-\theta)^2}D_\theta X_1 = \dfrac{\theta(1-\theta)}{\theta^2(1-\theta)^2} = \dfrac{1}{\theta(1-\theta)}$. $\sigma^2(\theta) = 1/ i(\theta) = \theta(1-\theta)$.
+\end{proof}
+\begin{problem}
+	На высоте 1м от поверхности находится $\gamma$-излучатель. Регистрируются точки пересечения с горизонтальной осью. Направление равномерно распределено по полуокружности. Оценить $\theta$.
+\end{problem}
+\begin{proof}
+	$x$ — точка пересечения с осью, $\alpha_x$ — угол, который образует точка $x$. Найдем распределение $x$. Заметим, что оно симметрично относительно $\theta$. При $x \geqslant 0$: $F_\theta(x) = P_\theta(X \leqslant x) = P_\theta(X \leqslant \theta) + P_\theta(\theta \leqslant X \leqslant x) = \dfrac{1}{2} + \dfrac{\alpha_x}{\pi} = \dfrac{1}{2} + \arctan\left(\dfrac{x - \theta}{\pi}\right)$.
+	$$p_\theta(x) = F'_\theta(x) = \dfrac{1}{\pi(1 + (x - \theta)^2)} \text{ — распределение Коши}.$$
+
+	\begin{enumerate}
+		\item Метод моментов неприменим, т. к. несуществует $E_\theta X_1$.
+		\item Метод максимизации правдоподобия: $$L_X(\theta) = \prod_{i=1}^n \dfrac{1}{\pi(1 + (X_i - \theta)^2)};$$ $$l_X(\theta) = -\sum_{i=1}^n \ln(1 + (X_i - \theta)^2);$$ $$\dfrac{\partial l_X(\theta)}{\partial \theta} = 2\sum_{i = 1}^n \dfrac{X_i - \theta}{1 + (X_i - \theta)^2} = 0.$$ Дальше решать это грустно.
+		\item Почему бы не взять $\hat{\theta} = \overline{X}$? Посчитаем распределение $\overline{X}$: $\varphi_X(t) = E e^{itX}$. Для Коши $\varphi_{X_1} = e^{-|t|}$ $(\theta = 0)$.
+		$$\varphi_{\overline{X}} (t) = E e^{it\overline{X}} = Ee^{it\dfrac{1}{n} \sum X_i} = E\prod_{i=1}^n e^{i(t/n)X_i} = /\text{незав.}/ = \prod_{i=1}^n Ee^{i(t/n)X_i} = |X_i \stackrel{d}{=} X_1| = $$ $$=\left(Ee^{i(t/n)X_1}\right)^n = e^{-|t|} = \varphi_{X_1}(t) \Rightarrow \text{ по теореме о единственности } \overline{X} \stackrel{d}{=} X_1.$$
+		\textbf{Вывод:} усреднение ничего не дает.
+		\item Медиана - рассмотрим далее.
+	\end{enumerate}
+\end{proof}
+\subsection{Выоброчные квантили}
+\begin{definition}
+	Пусть $P$ — распределение на $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ с функцией распределение $F(X)$. Пусть $p \in (0, 1)$. Тогда $p$-квантилью распределения $P$ называется $u_p = \min \{x | F(x) \geqslant p\}$; $1/2$-квантиль называется медиантой.
+\end{definition}
+\begin{example}
+	$Exp(1)$, $F(x) = 1 - e^{-x}$, $u_p = -\ln(1-p)$ — $p$-квантиль $Exp(1)$.
+\end{example}
+\begin{definition}
+	Пусть $X = (X_1, \ldots X_n)$ — выборка. Выборочной $p$-квантилью называется $\hat{u_p} = X_{(\lceil np \rceil)}$. Выборочной медианой $$ \hat{\mu} = \begin{cases}
+		X_{(k+1)} & \text{ если } n = 2k + 1\\
+		\dfrac{X_{(k)} + X_{(k+1)}}{2} & \text{ если } n = 2k
+	\end{cases}.$$
+\end{definition}
+\begin{example}
+	$X = (7, 9, 15, 8, 12, 1, 8, 5, 17, 21)$. Найти выборочные квантили уровней $0.01$, $0.1$, $0.25$ и медиану.
+\end{example}
+\begin{solution}
+	Сортируем: $(1, 5, 7, 8, 8, 9, 12, 15, 17, 21)$. $\hat{\mu} = \dfrac{8 + 9}{2} = 8.5$. $\hat{u}_{0.01} = X_{(\lceil 10 \cdot 0.01 \rceil)} = X_{(1)} = 1$.
+	 $\hat{u}_{0.1} = X_{(1)} = 1$. $\hat{u}_{0.25} = X_{(\lceil 10 \cdot 0.25 \rceil)} = X_{(3)} = 7$.
+\end{solution}
+\begin{theorem}
+	Пусть $ (X_n, n \in \mathbb{N})$ — выборка неограниченного размера из распределения $P$ с плотностью $f(x)$. Число $p \in (0, 1)$, такое что $f(x)$ непрерывна
+	в окрестности $u_p$ и $f(u_p) > 0$. Тогда $$\sqrt{n}(\hat{u}_p - u_p) \xrightarrow{d} \mathcal{N}\left(0, \dfrac{p(1-p)}{f^2(u_p)}\right).$$
+	Аналогично для выборочной медианы $$\sqrt{n}(\hat{\mu} - u_{1/2}) \xrightarrow{d} \mathcal{N}\left(0, \dfrac{1}{4f^2(u_{1/2})}\right).$$
+\end{theorem}
+Вспомним про $\gamma$-котиков. $\hat{\mu}$ — а.н.о. $\theta$ с асимптотической дисперсией $\dfrac{1}{4\frac{1}{\pi^2 (1-\theta)^2}} = \dfrac{\pi^2}{4} \approx 2.47$. При этом $i(\theta) = 1/2 \Rightarrow 1/ i(\theta) = 2$ — асимптотическая дисперсия ОМП.
+\end{document}
