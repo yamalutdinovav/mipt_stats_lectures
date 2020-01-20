@@ -148,7 +148,7 @@
 	\begin{enumerate}
 		\item Оценка $\hat{\theta_n}(X_1, \dots, X_n)$ называется \emph{состоятельной оценкой} $\theta$, если $$\hat{\theta_n}(X_1, \dots, X_n) \xrightarrow{P_\theta} \theta \quad \forall \theta \in \Theta.$$
 		\item Оценка $\hat{\theta_n}(X_1, \dots, X_n)$ называется \emph{сильно состоятельной оценкой} $\theta$, если $$\ \hat{\theta_n}(X_1, \dots, X_n) \xrightarrow{P_\theta-п.н.} \theta \quad \forall \theta \in \Theta.$$
-		\item Оценка $\hat{\theta_n}(X_1, \dots, X_n)$ называется \emph{асимптотически нормальной оценкой} $\theta$, если $$\ \sqrt{n}(\hat{\theta_n}(X_1, \dots, X_n) - X) \xrightarrow{d_\theta} \mathcal{N}(0, \Sigma(\theta)) \quad \forall \theta \in \Theta,$$
+		\item Оценка $\hat{\theta_n}(X_1, \dots, X_n)$ называется \emph{асимптотически нормальной оценкой} $\theta$, если $$\ \sqrt{n}(\hat{\theta_n}(X_1, \dots, X_n) - \theta) \xrightarrow{d_\theta} \mathcal{N}(0, \Sigma(\theta)) \quad \forall \theta \in \Theta,$$
 		где $\Sigma(\theta)$ — \emph{асимптотическая матрица ковариаций}.
 		Если $d=1$, то $\Sigma(\theta) = \sigma^2(\theta)$ — \emph{асимптотическая дисперсия}.
 	\end{enumerate}
@@ -158,7 +158,7 @@
 	$\;$
 	\begin{enumerate}
 		\item \emph{Состоятельность:} при больших $n$ вероятность большого отклонения оценки $\hat{\theta_n}$ от $\theta$ мала, но нет численной характеристики степени отклонения.
-		\item \emph{асимптотическая нормальность:} дает численную характеристику степени отклонения
+		\item \emph{Асимптотическая нормальность:} дает численную характеристику степени отклонения
 
 		Пусть  $\hat{\theta_n}$ — а.н.о. $\ \theta$ с а.д. $\sigma^2(\theta)$. Тогда при больших $n\quad \hat{\theta_n} \sim_{прибл.} \mathcal{N}\left(\theta, \frac{\sigma^2(\theta)}{n}\right)$.
 
@@ -174,7 +174,7 @@ $p_{\theta}(x) = \dfrac{1}{2}e^{-|x-\theta|}. \quad E_\theta X_1 = \theta, D_\th
 \emph{УЗБЧ}: $\overline{X} \xrightarrow{P_\theta-п.н.} \theta \implies \overline{X}$ — (сильно) состоятельная оценка $\theta$.
 
 \emph{ЦПТ}: $\sqrt{n}(\overline{X} - \theta) \xrightarrow{d_\theta} \mathcal{N}(0, 2) \implies \overline{X} \sim_{прибл.} \mathcal{N}(0, \frac{2}{n})$. По свойствам нормального распределения, с вероятностью $> 0.99$:
-$$ \theta - 3\sqrt{\frac{2}{n}} < \overline{X} < \theta + 3\sqrt{\frac{2}{n}} \\ \overline{X} - 3\sqrt{\frac{2}{n}} < \theta < \overline{X} + 3\sqrt{\frac{2}{n}}$$
+$$ \theta - 3\sqrt{\frac{2}{n}} < \overline{X} < \theta + 3\sqrt{\frac{2}{n}}$$ $$\overline{X} - 3\sqrt{\frac{2}{n}} < \theta < \overline{X} + 3\sqrt{\frac{2}{n}}$$
 \emph{(доверительный интервал)}.
 
 Пусть $n = 200, \overline{X} = 1$. Тогда неравенство имеет вид
@@ -952,7 +952,7 @@ $$\geqslant \int\limits_0^{u_{1-\alpha}}x^2p_0(x)dx + u_{1-\alpha}^2\underbrace{
 	$X_1, \dots, X_n \sim \mathcal{N}(\theta, \sigma^2)$, $\sigma$ известно. Построить точные доверительные интервалы для $\theta$.  
 \end{example}
 \begin{solution}
-	аметим, что $X_i - \theta \sim \mathcal{N}(0, \sigma^2)$, следовательно, $\overline{X} - \theta \sim \mathcal{N}(0, \frac{\sigma^2}{n}).$  
+	Заметим, что $X_i - \theta \sim \mathcal{N}(0, \sigma^2)$, следовательно, $\overline{X} - \theta \sim \mathcal{N}(0, \frac{\sigma^2}{n}).$  
 $G(X, \theta) = \sqrt{n}\dfrac{\overline{X} - \theta}{\sigma} \sim \mathcal{N}(0, 1)$ — центральная функция. Будем обозначать через $z_p$ $\ p$-квантили распределения $\mathcal{N}(0, 1)$. Тогда 
 $$ P_\theta\left(-z_{\frac{1+\alpha}{2}} \leqslant\sqrt{n}\dfrac{\overline{X} - \theta}{\sigma} \leqslant  z_{\frac{1+\alpha}{2}} \right) = \alpha \implies P_\theta \left(\overline{X} - \dfrac{z_{\frac{1+\alpha}{2}}  \sigma}{\sqrt{n}} \leqslant \theta \leqslant \overline{X} + \dfrac{z_{\frac{1+\alpha}{2}}  \sigma}{\sqrt{n}} \right) = \alpha.
 $$
@@ -1453,7 +1453,7 @@ $\hat{\theta = \displaystyle{\argmin_{\theta \in \mathbb{R}^d}}} RSS(\theta)$ �
 \end{theorem}
 \begin{proof}
 	\begin{enumerate}
-		\item $\mathbb{E}(\hat{\theta} = \mathbb{E}(X^T X)^{-1}X^T Y) = (X^T X)^{-1} X^T \mathbb{E}(X\theta + \varepsilon) = (X^T X)^{-1}X^T X \theta = \theta$.
+		\item $\mathbb{E}\hat{\theta} = \mathbb{E}(X^T X)^{-1}X^T Y) = (X^T X)^{-1} X^T \mathbb{E}(X\theta + \varepsilon) = (X^T X)^{-1}X^T X \theta = \theta$.
 		\item $\mathbb{D}\hat{\theta} = \mathbb{D}(X^T X)^{-1}X^T Y = (X^T X)^{-1} X^T \cdot \mathbb{D} Y \cdot X(X^T X)^{-1} = \sigma^2(X^T X)^{-1}X^T X (X^T X)^{-1} = \sigma(X^T X)^{-1}$.
 	\end{enumerate}
 \end{proof}
@@ -1528,9 +1528,9 @@ $P\left(\dfrac{\hat{\sigma} (n-d)}{\sigma^2} > \chi^2_{n-d, \alpha}\right) = 1 -
 	$$T(X, Y) = \dfrac{c^T(\hat{\theta} - \theta)}{\sigma\sqrt{c^T(X^T X)^{-1}c}} \dfrac{1}{\sqrt{\dfrac{\hat{\sigma}^2(n-d)}{\sigma^2}/(n-d)}}\sim T_{n-d}.$$
 \end{proof}
 Возьмем $c = (0, \ldots, \underbrace{1}_{j} \ldots, 0)^T$. Тогда
-$$T_j(X, Y) = \dfrac{\hat{\theta}_j - \theta_j}{\hat{\sigma\sqrt{(X^T X)^{-1}_{jj}}}} \sim T_{n-d}.$$
+$$T_j(X, Y) = \dfrac{\hat{\theta}_j - \theta_j}{\hat{\sigma}\sqrt{(X^T X)^{-1}_{jj}}} \sim T_{n-d}.$$
 \begin{enumerate}
-	\item $P(|T_j(X, Y)| < T_{n-d, 1-\alpha/2}) = 1 - \alpha \Rightarrow (\hat{\theta}_j \pm \hat{\sigma}^2\sqrt{(X^T X)^{-1}_{jj}}\cdot T_{n-d,1-\alpha/2})$ — довиретильный интервал для $\theta_j$.
+	\item $P(|T_j(X, Y)| < T_{n-d, 1-\alpha/2}) = 1 - \alpha \Rightarrow (\hat{\theta}_j \pm \hat{\sigma}^2\sqrt{(X^T X)^{-1}_{jj}}\cdot T_{n-d,1-\alpha/2})$ — доверетильный интервал для $\theta_j$.
 	\item $H_0$: $\theta_j = 0$ — гипотеза о незначимости коэффициента. При справедливости $H_0$:
 	$$T_j^0(X, Y) = \dfrac{\hat{\theta}_j}{\hat{\sigma}^2\sqrt{(X^T X)^{-1}_{jj}}} \sim T_{n-d}.$$
 	Критерий: $S =\{|T_j^0(X, Y)| > T_{n-d,1-\alpha/2}\}$.
@@ -1570,7 +1570,7 @@ $$F(X, Y) = \dfrac{\dfrac{1}{\sigma^2}\Vert X\hat{\theta} - X\theta\Vert^2}{\dfr
 	$$/ \text{по утверждению из начала 7.3: } \dfrac{1}{\sigma^2}\Vert Y - X\hat{\theta}\Vert^2 \sim \chi^2_{n-d}/$$
 	$$\Rightarrow \text{зависит только от }\hat{\theta} \text{ и не зависит от }Y - X\hat{\theta}.$$
 
-	$$F(X, Y) = \dfrac{(\hat{t} - \tau)^TB^{-1}(\hat{t} - \tau)}{\Vert Y - X\hat{\theta} \Vert^2} \cdot \dfrac{n-d}{l} \stackrel{H_0}{\sim} F_{k, n-d}.$$
+	$$F(X, Y) = \dfrac{(\hat{t} - \tau)^TB^{-1}(\hat{t} - \tau)}{\Vert Y - X\hat{\theta} \Vert^2} \cdot \dfrac{n-d}{k} \stackrel{H_0}{\sim} F_{k, n-d}.$$
 	Критерий $S = \{F(X, Y) > F_{k, n-d, 1-\alpha}\}$ — $F$-критерий.
 \end{example}
 
@@ -2005,4 +2005,4 @@ $$\chi(x) = \displaystyle{\sum_{j=1}^k}\dfrac{(\mu_j - np_j^0)^2}{np_j^0}.$$
 		\end{itemize}
 	\end{enumerate}
 \end{problem}
-\end{document}
+\end{document} 
