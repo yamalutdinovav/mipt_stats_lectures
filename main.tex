@@ -247,7 +247,7 @@ $$\dfrac{h(a + \xi_n b_n) - h(a)}{b_n} \xrightarrow{d} \dfrac{\partial h}{\parti
 	$$ H(\xi_n b_n) = \dfrac{h(\xi_n b_n+a) - h(a)}{\xi_n b_n} \xrightarrow{p} H(0) = h'(a) \implies \\ \implies  \dfrac{h(\xi_n b_n+a) - h(a)}{\xi_n b_n} \xrightarrow{d} h'(a). $$
 	Применим еще раз лемму Слуцкого:
 	$$ \xi_n H(\xi_n b_n) \xrightarrow{d} h'(a)\xi. $$
-	Следовательно, $\dfrac{h(\xi_n b_n+a) - h(a)}{b_n} \xrightarrow{d} h'(a).$
+	Следовательно, $\dfrac{h(\xi_n b_n+a) - h(a)}{b_n} \xrightarrow{d} h'(a) \xi.$
 \end{proof}
 
 \begin{example}
@@ -287,14 +287,14 @@ $$\sqrt{n}\left(\overline{X} - \dfrac{1}{\theta}\right) \xrightarrow{d_\theta} \
 \textbf{Доказательство теоремы о наследовании сходимостей:}\\
 \begin{enumerate}
 	\setItemnumber{2}
-	\item $\xi_n\xrightarrow{п.н.} \xi$, $h:\mathbb{R}^d \rightarrow \mathbb{R}^k$ непрерывна на множестве $B:P(\xi \in B) = 1$. $\xi_n \xrightarrow{п. н.} \xi \Leftrightarrow P(\displaystyle{\lim_{n \to \infty} \xi_n = \xi}) = 1$. Хотим доказать, что $P(\displaystyle{\lim_{n \to \infty} h(\xi_n) =h(\xi)) = 1}$. $P(\displaystyle{\lim_{n \to \infty} h(\xi_n) =h(\xi)) = 1} \geqslant P(\displaystyle{\lim_{n \to \infty}\xi_n = \xi, \xi \in B) = 1},$ так как вероятность этого события равна 1.
+	\item $\xi_n\xrightarrow{п.н.} \xi$, $h:\mathbb{R}^d \rightarrow \mathbb{R}^k$ непрерывна на множестве $B:P(\xi \in B) = 1$. $\xi_n \xrightarrow{п. н.} \xi \Leftrightarrow P(\displaystyle{\lim_{n \to \infty} \xi_n = \xi}) = 1$. Хотим доказать, что $P(\displaystyle{\lim_{n \to \infty} h(\xi_n) =h(\xi)) = 1}$. $P(\displaystyle{\lim_{n \to \infty} h(\xi_n) =h(\xi)) = 1} \geqslant P(\displaystyle{\lim_{n \to \infty}\xi_n = \xi, \xi \in B)},$ так как вероятность этого события равна 1.
 	\setItemnumber{1}
 	\item $\xi_n \xrightarrow{P} \xi$ и $h : \mathbb{R}^d \rightarrow \mathbb{R}^k$ непрерывна на $B$ таком, что $P(\xi \in B) = 1$. 
-	$$h(\xi_n) \xrightarrow{P} h(\xi) \Leftrightarrow \forall \varepsilon > 0 \underbrace{P(\Vert h(\xi_n) - h(\xi)\Vert) > \varepsilon}_{\forall \delta > 0 \exists N : \forall n > N P(\Vert h(\xi_n)-h(\xi)\Vert) > \varepsilon < \delta} \rightarrow 0.$$
+	$$h(\xi_n) \xrightarrow{P} h(\xi) \Leftrightarrow \forall \varepsilon > 0 \underbrace{P(\Vert h(\xi_n) - h(\xi)\Vert) > \varepsilon}_{\forall \delta > 0 \exists N : \forall n > N P(\Vert h(\xi_n)-h(\xi)\Vert > \varepsilon) < \delta} \rightarrow 0.$$
 	$$h(\xi_n) \stackrel{P}{\nrightarrow} h(\xi) \Rightarrow \exists \varepsilon, \delta, \{\xi_n\}_{k=1}^\infty : P(\Vert h(\xi_n) - h(\xi) \Vert > \varepsilon) > \delta.$$ 
-	Заметим, что $\xi_n \rightarrow \xi \Rightarrow$ существует последовательность $\{\xi_{n_{k_s}}\}_{s=1}^\infty$ такая, что $\xi_{n_{k_s}} \xrightarrow{п. н.} \xi$, $s \rightarrow \infty$.
+	Заметим, что $\xi_{n_k} \rightarrow \xi \Rightarrow$ существует последовательность $\{\xi_{n_{k_s}}\}_{s=1}^\infty$ такая, что $\xi_{n_{k_s}} \xrightarrow{п. н.} \xi$, $s \rightarrow \infty$.
 	\setItemnumber{3}
-	\item $\xi_n \xrightarrow{d} \xi$ и $h$ непрерывна. Возьмем $f : \mathbb{R}^k \rightarrow \mathbb{R}$ — непрерывная ограниченная. Тогда $f(h(x))$ непрерывная ограниченная на $\mathbb{R}^d$, и, поскольку $\xi_n \xrightarrow{d} \xi$, то $\mathbb{E}(h(\xi_n)) \rightarrow \mathbb{E}f(h(\xi)) \Rightarrow h(\xi_n) \xrightarrow{d} h(\xi)$ по определению. 
+	\item $\xi_n \xrightarrow{d} \xi$ и $h$ непрерывна. Возьмем $f : \mathbb{R}^k \rightarrow \mathbb{R}$ — непрерывная ограниченная. Тогда $f(h(x))$ непрерывная ограниченная на $\mathbb{R}^d$, и, поскольку $\xi_n \xrightarrow{d} \xi$, то $\mathbb{E}f(h(\xi_n)) \rightarrow \mathbb{E}f(h(\xi)) \Rightarrow h(\xi_n) \xrightarrow{d} h(\xi)$ по определению. 
 
 \end{enumerate}
 
@@ -378,7 +378,7 @@ $$m(\theta) = \begin{pmatrix}E_\theta g_1(X_1)\\ \ldots \\ E_\theta g_d(x_1)\end
 	$L_X(\theta) = p_\theta(X) = \displaystyle{\prod_{i = 1}^n}p_\theta(X_i)$ — функция правдоподобия (как функция от $\theta$).
 \end{definition}
 \begin{definition}
-	$l_X(\theta) = L_X(\theta)$ — логарифмическая функция правдоподобия.
+	$l_X(\theta) = \ln L_X(\theta)$ — логарифмическая функция правдоподобия.
 \end{definition}
 \begin{remark}
 	При фиксированном $\theta$ функция правдоподобия равна плотности выборки, в которую в качестве аргумента подставлена сама выборка.
@@ -452,7 +452,7 @@ $$\dfrac{\partial l_X(\theta)}{\partial \theta} = \dfrac{n}{\theta}-\sum_{i = 1}
 	На высоте 1м от поверхности находится $\gamma$-излучатель. Регистрируются точки пересечения с горизонтальной осью. Направление равномерно распределено по полуокружности. Оценить $\theta$.
 \end{problem}
 \begin{solution}
-	$x$ — точка пересечения с осью, $\alpha_x$ — угол, который образует точка $x$. Найдем распределение $x$. Заметим, что оно симметрично относительно $\theta$. При $x \geqslant 0$: $F_\theta(x) = P_\theta(X \leqslant x) = P_\theta(X \leqslant \theta) + P_\theta(\theta \leqslant X \leqslant x) = \dfrac{1}{2} + \dfrac{\alpha_x}{\pi} = \dfrac{1}{2} + \dfrac{\arctan\left(x - \theta\right)}{\pi}$.
+	$x$ — точка пересечения с осью, $\alpha_x$ — угол, который образует точка $x$. Найдем распределение $x$. Заметим, что оно симметрично относительно $\theta$. При $x \geqslant \theta$: $F_\theta(x) = P_\theta(X \leqslant x) = P_\theta(X \leqslant \theta) + P_\theta(\theta \leqslant X \leqslant x) = \dfrac{1}{2} + \dfrac{\alpha_x}{\pi} = \dfrac{1}{2} + \dfrac{\arctan\left(x - \theta\right)}{\pi}$.
 	$$p_\theta(x) = F'_\theta(x) = \dfrac{1}{\pi(1 + (x - \theta)^2)} \text{ — распределение Коши}.$$
 
 	\begin{enumerate}
@@ -1046,7 +1046,7 @@ $G(X, \theta) = \sqrt{n-1}\dfrac{\overline{X} - \theta}{S}$ — централь
 
 $G(X, \sigma) = \dfrac{nS^2}{\sigma^2} \sim \chi^2_{n-1}$ — центральная функция.
 
-Аналогично п.2 получаем интервал $\left(\sqrt{\dfrac{nS^2}{\chi^2_{n, \frac{1+\alpha}{2}}}}, \sqrt{\dfrac{nS^2}{\chi^2_{n, \frac{1-\alpha}{2}}}}\right)$.
+Аналогично п.2 получаем интервал $\left(\sqrt{\dfrac{nS^2}{\chi^2_{n-1, \frac{1+\alpha}{2}}}}, \sqrt{\dfrac{nS^2}{\chi^2_{n-1, \frac{1-\alpha}{2}}}}\right)$.
 
 \begin{theorem}[о разложении гауссовского вектора]
 	Пусть $\xi = (\xi_1, \dots, \xi_n) \sim \mathcal{N} (a, \sigma^2 I_n)$,  $\mathbb{R}^n = \mathcal{L}_1 \oplus \dots \oplus \mathcal{L}_k$ — разложение в прямую сумму ортогональных подпространств, $\eta_j = \operatorname{proj}_{\mathcal{L}_j} \xi$ — проекция на $\mathcal{L}_j$. Тогда:
